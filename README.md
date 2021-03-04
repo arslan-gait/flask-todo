@@ -37,7 +37,7 @@ python app.py
 - Signup and login
 ```
 {
-    "email":"name@example.com",
+    "email": "name@example.com",
     "password": "my_pass"
 }
 ```
