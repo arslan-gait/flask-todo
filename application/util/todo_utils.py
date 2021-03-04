@@ -3,7 +3,7 @@ from flask import current_app as app
 from application import db
 from application.email import send_update_todo_status_email
 from application.models import Todo
-from application.error import NotUsersTodoError, TodoNotFoundError, InvalidParametersError
+from application.error import TodoNotFoundError, InvalidParametersError
 
 
 def get_todo_by_id(user, todo_id):
@@ -40,8 +40,8 @@ def mark_todo(user, todo_id):
 
 def delete_todo(user, todo_id):
     todo_entity = get_todo_by_id(user, todo_id)
-    if user.id != todo_entity.user_id:
-        raise NotUsersTodoError
+    if todo_entity is None:
+        raise TodoNotFoundError
     db.session.query(Todo).filter(Todo.id == todo_id).delete()
     db.session.commit()
 

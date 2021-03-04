@@ -27,13 +27,6 @@ class UnauthorizedError(MyException):
         self.status_code = 401
 
 
-class NotUsersTodoError(MyException):
-    def __init__(self):
-        MyException.__init__(self)
-        self.message = "Not user's todo"
-        self.status_code = 401
-
-
 class UserExistsError(MyException):
     def __init__(self):
         MyException.__init__(self)
